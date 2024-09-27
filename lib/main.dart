@@ -1,16 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_practice/activities/phone_auth.dart';
-import 'package:firebase_practice/activities/verify_otp.dart';
-import 'package:firebase_practice/firebase_options.dart';
-import 'package:firebase_practice/providers/phone_auth_Provider.dart';
+import 'package:firebase_practice/net_ninja/wrapper.dart';
+import 'package:firebase_practice/newTutorials/secreens/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase .initializeApp();
   runApp(const MyApp());
 }
 
@@ -19,18 +14,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => PhoneProvider())
-        ],
-        child: MaterialApp(
+    return  MaterialApp(
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
+            primarySwatch: Colors.purple
           ),
-          home: PhoneAuth(),
-        ));
+          home: SplashScreen(),
+        );
   }
 }
